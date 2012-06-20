@@ -12,7 +12,7 @@
   </head>
   <body class="<?php print $classes; ?>" <?php print $attributes;?>>
     <div id="skip">
-      <a href="#main-menu"><?php print t('Jump to Navigation'); ?></a>
+      <a href="#navigation"><?php print t('Jump to Navigation'); ?></a>
     </div>
     <?php print $page_top; ?>
     <?php print $page; ?>
