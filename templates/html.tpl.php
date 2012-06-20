@@ -1,10 +1,10 @@
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" xml:lang="<?php print $language->language; ?>" lang="en" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en" xml:lang="<?php print $language->language; ?>" lang="en" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" xml:lang="<?php print $language->language; ?>" lang="en" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" xml:lang="<?php print $language->language; ?>" lang="en" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <!--<![endif]-->
-  <head profile="<?php print $grddl_profile; ?>">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php print $language->language; ?>" xml:lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="<?php print $language->language; ?>" xml:lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="<?php print $language->language; ?>" xml:lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>" <?php print $rdf_namespaces; ?>> <!--<![endif]-->
+  <head>
     <?php print $head; ?>
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
