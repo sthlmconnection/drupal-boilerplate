@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Default Element Styles
 // --------------------
-// This partial establishes general rules and browser resets. Standard HTML 
-// elements (text, lists, tables, forms, etc...) are all defined here. 
+// This partial establishes general rules and browser resets. Standard HTML
+// elements (text, lists, tables, forms, etc...) are all defined here.
 //
 // This is largely addapted from the HTML5 Boilerplate project. Detailed
 // information about Boilerplate CSS can be found at: http://h5bp.com/css
@@ -36,6 +36,172 @@ audio:not([controls]) {
   display: none;
 }
 
+//Skip link
+#skip a {
+  // "Skip to Navigation" link
+  // ---------------------------
+  // This link useful for both visually impaired people and those with 
+  // mobility impairments who cannot use a mouse.
+  @include element-invisible-focusable;
+}
+
+//site Name
+#site-name {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: 300;
+  padding: 0 0 0.5em;
+  margin: 0;
+}
+
+// Bug fix for views 2 edit links.
+div.view div.views-admin-links {
+  width: auto;
+}
+
+// Rollover edit links for blocks.
+div.block {
+  position: relative;
+  .edit {
+    display: none;
+    position: absolute;
+    right: -20px;
+    top: -5px;
+    z-index: 40;
+    padding: 3px 8px 0;
+    font-size: 10px;
+    line-height: 16px;
+    background-color: white;
+    border: 1px solid #cccccc;
+    // let's get fancy!
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-box-shadow: 0 1px 3px #888888;
+    -webkit-box-shadow: -1px 1px 2px #666666;
+    a {
+      display: block;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  &:hover .edit {
+    display: block
+  }
+}
+
+//
+// Non-semantic Helper Classes
+////////////////////////////////////////
+
+.ir { // For image replacement
+  display: block;
+  border: 0;
+  text-indent: -999em;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+  *line-height: 0;
+  br {
+    display: none;
+  }
+}
+
+.hidden { // Hide from both screenreaders and browsers: h5bp.com/u
+  display: none !important;
+  visibility: hidden;
+}
+
+.visuallyhidden { // Hide only visually, but have it available for screenreaders: h5bp.com/v
+  @include element-invisible;
+  &.focusable:active, &.focusable:focus { // Allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+    @include element-invisible-off;
+  }
+}
+
+.invisible { // Hide visually and from screenreaders, but maintain layout
+  visibility: hidden;
+}
+
+.clearfix { // Contain floats: h5bp.com/q
+  @include my-clearfix;
+}
+
+// clear classes
+.clearleft, .clearl, .cleft {
+  clear: left;
+}
+.clearright, .clearr, .cright {
+  clear: right;
+}
+
+.clear, .clearboth, .clearall {
+  clear: both;
+}
+
+// Float classes
+.floatleft, .fleft, .floatl {
+  @include my-float-left;
+}
+
+.floatright, .fright, .floatr {
+  @include my-float-right;
+}
+
+
+//
+// UI improvments.
+//
+#edit-title {
+  font-size: 24px;
+  width: 99%;
+}
+
+#system-themes-form img {
+  width: 100px;
+}
+
+.form-item .description {
+  font-style: italic;
+  line-height: 1.2em;
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: #777;
+}
+
+#edit-delete {
+  color: #c00;
+}
+
+//Messages
+div.messages { // Console, style from slate theme.
+  padding: 9px;
+  margin: 1em 0;
+  color: #036;
+  background: #bdf;
+  border: 1px solid #ace;
+}
+
+div.warning {
+  color: #840;
+  background: #fe6;
+  border-color: #ed5;
+}
+
+div.error {
+  color: white;
+  background: #e63;
+  border-color: #d52;
+}
+
+div.status {
+  color: #360;
+  background: #cf8;
+  border-color: #bbee77;
+}
+
 //
 // Base
 //
@@ -52,7 +218,7 @@ html, button, input, select, textarea {
 
 body {
   margin: 0;
-  // Setting up font size, leading and font family 
+  // Setting up font size, leading and font family
   // http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography
   font: 13px / 1.5em $main_font;
   letter-spacing: 0.03em;
@@ -74,202 +240,6 @@ body {
   text-shadow: none;
 }
 
-//
-// Links
-//
-a {
-  color: $link_color;
-  &:link {
-  }
-  &:visited {
-    color: $visited_link_color;
-  }
-  &:hover {
-    color: $active_link_color;
-  }
-  &:focus {
-    color: $active_link_color;
-    outline: thin dotted;
-  }
-  &:hover, &:active {
-    color: $active_link_color;
-    text-decoration: underline;
-    outline: 0; // Improve readability when focused and hovered in all browsers: h5bp.com/h
-  }
-}
-
-//
-// Typography
-//
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.3em;
-  color: $header_text_color;
-}
-
-h1 {
-  font-size: 2.2em;
-  font-weight: 300;
-  padding: 0 0 0.5em;
-  margin: 0;
-}
-
-h2 {
-  font-size: 1.8em;
-  font-weight: 300;
-  margin-bottom: 0.75em;
-}
-
-h3 {
-  font-size: 1.4em;
-  margin-bottom: 1em;
-}
-
-h4 {
-  font-size: 1.2em;
-  margin-bottom: 0.8em;
-}
-
-h5 {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin-bottom: 0;
-}
-
-h6 {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-p {
-  margin: 0 0 1em 0;
-}
-
-abbr {
-  border-bottom: 1px dotted #666;
-  cursor: help;
-  white-space: nowrap;
-}
-
-b, strong {
-  font-weight: bold;
-}
-
-blockquote {
-  margin: 1em 40px;
-}
-
-dfn {
-  font-style: italic;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-ins {
-  background: #ff9;
-  color: #000;
-  text-decoration: none;
-}
-
-mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-pre, code, kbd, samp, tt {
-  font-family: $monospace_font; // Redeclare monospace font family: h5bp.com/j
-  font-size: 1em;
-  line-height: 1.5em;
-}
-
-pre { // Improve readability of pre-formatted text in all browsers
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  background-color: #efefef;
-  display: block;
-  padding: 5px;
-  margin: 5px 0;
-  border: 1px solid #aaa;
-}
-
-q {
-  quotes: none;
-}
-
-q:before, q:after {
-  content: "";
-  content: none;
-}
-
-small {
-  font-size: 85%;
-}
-
-sub, sup { // Position subscript and superscript content without affecting line-height: h5bp.com/k
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-//
-// Lists
-//
-ul, ol {
-  margin: 1em 0;
-  padding: 0 0 0 2em;
-}
-
-dd {
-  margin: 0 0 0 2em;
-}
-
-nav ul, nav ol {
-  list-style: none;
-  list-style-image: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style-type: disc;
-  ul {
-    list-style-type: circle;
-    ul {
-      list-style-type: square;
-      ul {
-        list-style-type: circle;
-      }
-    }
-  }
-}
-
-ol {
-  list-style-type: decimal;
-  ol {
-    list-style-type: lower-alpha;
-    ol {
-      list-style-type: decimal;
-    }
-  }
-}
 
 //
 // Embedded content
@@ -325,9 +295,9 @@ button, input {
 
 }
 
-button, 
-input[type="button"], 
-input[type="reset"], 
+button,
+input[type="button"],
+input[type="reset"],
 input[type="submit"] {
   cursor: pointer;             // Display hand cursor for clickable form elements
   -webkit-appearance: button;  // Allow styling of clickable form elements in iOS
@@ -338,7 +308,7 @@ button[disabled], input[disabled] {
   cursor: default; // Re-set default cursor for disabled elements
 }
 
-input[type="checkbox"], 
+input[type="checkbox"],
 input[type="radio"] { // Consistent box sizing and appearance
   box-sizing: border-box;
   padding: 0;
@@ -353,12 +323,12 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-input[type="search"]::-webkit-search-decoration, 
+input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
-button::-moz-focus-inner, 
+button::-moz-focus-inner,
 input::-moz-focus-inner {  // Remove inner padding and border in FF3/4: h5bp.com/l
   border: 0;
   padding: 0;
@@ -373,7 +343,7 @@ textarea {
 input:valid, textarea:valid { // Colors for form validity
 }
 
-input:invalid, 
+input:invalid,
 textarea:invalid {
   background-color: #f0dddd;
 }
@@ -460,4 +430,4 @@ tr.odd {
   #navigation {
     height: 50px
   }
-}  
+}

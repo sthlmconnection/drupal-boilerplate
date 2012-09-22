@@ -91,6 +91,9 @@ function drush_boilerplate($name = NULL, $machine_name = NULL) {
   }
   drush_op('boilerplate_file_str_replace', $newtheme_info_file, array_keys($alterations), $alterations);
 
+  // Remove the packaging script signature from the end of the info file
+  drush_op('boilerplate_file_preg_replace', $newtheme_info_file, '/\n; Information added by drupal.*\Z/s', '');
+
   // Replace all occurrences of 'Boilerplate' with the machine name of our new theme.
   drush_op('boilerplate_file_str_replace', $newtheme_path . '/theme-settings.php', 'boilerplate', $machine_name);
   drush_op('boilerplate_file_str_replace', $newtheme_path . '/template.php', 'boilerplate', $machine_name);
@@ -130,5 +133,13 @@ function boilerplate_copy($source_dir, $target_dir, $ignore = '/^(\.(\.)?|boiler
 function boilerplate_file_str_replace($file_path, $find, $replace) {
   $file_contents = file_get_contents($file_path);
   $file_contents = str_replace($find, $replace, $file_contents);
+  file_put_contents($file_path, $file_contents);
+}
+/**
+ * Replace strings in a file (with feeling)
+ */
+function boilerplate_file_preg_replace($file_path, $pattern, $replace) {
+  $file_contents = file_get_contents($file_path);
+  $file_contents = preg_replace($pattern, $replace, $file_contents);
   file_put_contents($file_path, $file_contents);
 }

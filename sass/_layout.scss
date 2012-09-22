@@ -20,23 +20,50 @@
 #page { // Remove 'auto' and the width to switch to a fluid width.
   width: $page_width;
   margin: 0 auto;
+  @media screen and (max-width : 800px) {
+    width: 100%;
+  }
+  @media screen and (max-width : 480px) {
+    width: 100%;
+    margin: $navigation_height 0px 0px 0px;
+  }
 }
 
 body, #page {
   height:100%; // Page height fills the screen and footer at the bottom.
 }
+body {
+  @media screen and (max-width : 800px) {
+    background: #fff;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: none;
+  }
+}
+html, body {
+  @media screen and (max-width : 800px) {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding: 0px;
+  }
+  @media screen and (max-width : 480px) {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding: 0px;
+  }
+}
 
 #main {
   padding-bottom: $footer_height;
   position: relative;
-}
-
-#skip a {
-  // "Skip to Navigation" link
-  // ---------------------------
-  // This link useful for both visually impaired people and those with 
-  // mobility impairments who cannot use a mouse.
-  @include element-invisible-focusable;
+  @media screen and (max-width : 800px) {
+    padding-bottom: 0px;
+  }
+  @media screen and (max-width : 480px) {
+    padding-bottom: 0px;
+    position: static;
+  }
 }
 
 #content {
@@ -52,6 +79,13 @@ body, #page {
 
 #sidebar-second {
   float: right;
+  @media screen and (max-width : 800px) {
+    float: none;
+    clear: both;
+    width: auto;
+    margin: 0px;
+    padding: 5px;
+  }
 }
 
 #footer {
@@ -61,6 +95,30 @@ body, #page {
   width: $page_width;
   float: none;
   clear: both;
+  @media screen and (max-width : 800px) {
+    position: relative;
+    width: 100%;
+  }
+  @media screen and (max-width : 480px) {
+    position: relative;
+    width: 100%;
+  }
+}
+
+.sidebar, #sidebar-first, #sidebar-second {
+  @media screen and (max-width : 480px) {
+    float: none;
+    clear: both;
+    width: auto;
+    margin: 0px;
+    padding: 5px;
+  }
+}
+#content #content-inner.center {
+  @media screen and (max-width : 480px) {
+    margin: 0px;
+    padding: 5px;
+  }
 }
 
 //
@@ -87,6 +145,10 @@ body, #page {
 #sidebar-first {
   width: percentage($first_sidebar_width / $page_width);
   margin-right: -$first_sidebar_width;
+  @media screen and (max-width : 480px) {
+    margin-right:0;
+    width:100%;
+  }
 }
 
 .two-sidebars,
@@ -97,7 +159,11 @@ body, #page {
 }
 
 #sidebar-second {
-  width: $second_sidebar_width;
+  width: $second_sidebar_width;  
+  @media screen and (max-width : 480px) {
+    margin-right:0;
+    width:100%;
+  }
 }
 
 //
@@ -124,6 +190,12 @@ body, #page {
   padding: 0;
   width: 100%;
   height: $navigation_height;
+  @media screen and (max-width : 480px) {
+    clear: both;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+  }
 }
 
 // Navigation height
@@ -132,4 +204,10 @@ body, #page {
   .sidebar {
     margin-top: $navigation_height;
   }
+  #content {
+    @media screen and (max-width : 480px) {
+      margin-top: 0px;
+    }
+  }
 }
+
